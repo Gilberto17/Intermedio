@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Examen</string>
+
+    <string name="bienvenida">Bienvenido</string>
+    <string name="botonDatos">Ingresar Datos</string>
+    <string name="botonV2">Saludar</string>
+
+    <string name="txt1">texto 1</string>
+    <string name="txt2">texto 2</string>
+    <string name="txt3">texto 3</string>
+</resources>
