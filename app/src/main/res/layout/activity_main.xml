@@ -19,11 +19,41 @@
             android:text="@string/bienvenida"
             android:textAlignment="center" />
 
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/nombre"
+            android:autofillHints="@string/nombre"
+            android:hint="@string/nombre"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/email"
+            android:autofillHints="@string/email"
+            android:hint="@string/email" />
+
+        <EditText
+            android:id="@+id/telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/telefono"
+            android:autofillHints="@string/telefono"
+            android:hint="@string/telefono"/>
+
         <Button
             android:id="@+id/botonDatos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="cambiarActivity"
+            android:onClick="guardarDatos"
             android:text="@string/botonDatos" />
 
         <Button

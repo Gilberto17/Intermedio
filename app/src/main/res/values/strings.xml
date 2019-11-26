@@ -2,6 +2,9 @@
     <string name="app_name">Examen</string>
 
     <string name="bienvenida">Bienvenido</string>
+    <string name="nombre">Nombre</string>
+    <string name="email">E-mail</string>
+    <string name="telefono">Telefono</string>
     <string name="botonDatos">Ingresar Datos</string>
     <string name="botonV2">Saludar</string>
 

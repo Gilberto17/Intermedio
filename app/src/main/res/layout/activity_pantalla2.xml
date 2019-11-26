@@ -12,21 +12,21 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txt1"
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txt2"
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/telefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txt3"
