@@ -1,89 +1,91 @@
 package com.example.examen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import android.view.View;
-import android.widget.Button;
+
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.view.Menu;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private AppBarConfiguration mAppBarConfiguration;
+
     private SharedPreferences infoDatos;
-    //VARIABLES GUARDADAS EN SHAREPREFERENCES
-    String mNombre, mEmail, mTelefono;
 
-    //VARIABLES GUARDADAS DE LOS CAMPOS DE TEXTO
-    EditText txtNombre, txtEmail, txtTelefono;
-
-    Button mBtnDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mBtnDatos = findViewById(R.id.btnDatos);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "No has modificado o asignado MainActivity", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
+                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
         infoDatos = getSharedPreferences("misDatos",
                 Context.MODE_PRIVATE);
-        mNombre = infoDatos.getString("nombre", "");
-        mEmail = infoDatos.getString("email", "");
-        mTelefono = infoDatos.getString("telefono", "");
 
-        txtNombre = findViewById(R.id.nombre);
-        txtEmail = findViewById(R.id.email);
-        txtTelefono = findViewById(R.id.telefono);
+        String mNombre = infoDatos.getString("nombre", "Reporte Ciudadano");
+        String mEmail = infoDatos.getString("email", "ciudadano@pachuca.gob.mx");
 
-        txtNombre.setText(mNombre);
-        txtEmail.setText(mEmail);
-        txtTelefono.setText(mTelefono);
+        View headerView = navigationView.getHeaderView(0);
 
+        TextView headerNombre = headerView.findViewById(R.id.headerNombre);
+        TextView headerMail = headerView.findViewById(R.id.headerMail);
 
-        mBtnDatos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,pantalla2.class);
-                        startActivity(intent);
-                Toast.makeText(getApplicationContext(),
-                        "hola Soy el Boton",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
+        headerNombre.setText(mNombre);
+        headerMail.setText(mEmail);
 
     }
 
-    public void guardarDatos(View view){
-        if(view.getId() == R.id.botonDatos){
-            SharedPreferences.Editor editor = infoDatos.edit();
-            editor.putString("nombre",txtNombre.getText().toString());
-            editor.putString("email",txtEmail.getText().toString());
-            editor.putString("telefono",txtTelefono.getText().toString());
-
-            editor.commit();
-            Toast.makeText(this,
-                    "Datos Guardados",
-                    Toast.LENGTH_LONG).show();
-
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
-    public void cambiarActivity(View view) {
-        Intent miIntent=null;
-        switch (view.getId()){
-            case R.id.botonDatos:
-                Toast.makeText(this,"Entrando a la nueva actividad", Toast.LENGTH_LONG).show();
-                miIntent=new Intent(MainActivity.this,pantalla2.class);
-                break;
-        }
-        if (miIntent!=null){
-            startActivity(miIntent);
-        }
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
-
-
-
 }

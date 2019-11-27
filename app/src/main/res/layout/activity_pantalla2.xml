@@ -7,29 +7,60 @@
     tools:context=".pantalla2">
 
     <LinearLayout
+        android:id="@+id/vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bienvenida"
+            android:textAlignment="center" />
+
+        <EditText
             android:id="@+id/nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt1"
-            android:textAlignment="center" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/nombre"
+            android:autofillHints="@string/nombre"
+            android:hint="@string/nombre"/>
 
-        <TextView
+        <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt2"
-            android:textAlignment="center" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/email"
+            android:autofillHints="@string/email"
+            android:hint="@string/email" />
 
-        <TextView
+        <EditText
             android:id="@+id/telefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt3"
-            android:textAlignment="center" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/telefono"
+            android:autofillHints="@string/telefono"
+            android:hint="@string/telefono"/>
+
+        <Button
+            android:id="@+id/botonDatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="guardarDatos"
+            android:text="@string/botonDatos" />
+
+        <Button
+            android:id="@+id/btnDatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/botonV2" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
