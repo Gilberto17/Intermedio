@@ -8,6 +8,10 @@
     <string name="botonDatos">Ingresar Datos</string>
     <string name="botonV2">Saludar</string>
 
+    <string name="txtHome">Pon datos aqui</string>
+    <string name="btnHome">Enter</string>
+    <string name="btnHome2">Enter</string>
+
     <string name="txt1">texto 1</string>
     <string name="txt2">texto 2</string>
     <string name="txt3">texto 3</string>
